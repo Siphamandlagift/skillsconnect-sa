@@ -16,6 +16,7 @@ export class Login {
   });
 
   readonly submitted = signal(false);
+  readonly forgotPassword = signal(false);
 
   readonly email = computed(() => this.loginForm.get('email')!);
   readonly password = computed(() => this.loginForm.get('password')!);
@@ -26,5 +27,9 @@ export class Login {
       // TODO: Implement authentication logic
       alert('Login successful!');
     }
+  }
+
+  onForgotPassword() {
+    this.forgotPassword.set(true);
   }
 }
