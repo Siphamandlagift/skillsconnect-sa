@@ -2,11 +2,12 @@ import { Component, signal } from '@angular/core';
 import { StudentDashboard } from './student-dashboard';
 import { StudentCalendar } from './student-calendar';
 import { StudentCourses } from './student-courses';
+import { StudentSettings } from './student-settings';
 
 @Component({
   selector: 'app-student-profile',
   standalone: true,
-  imports: [StudentDashboard, StudentCalendar, StudentCourses],
+  imports: [StudentDashboard, StudentCalendar, StudentCourses, StudentSettings],
   templateUrl: './student-profile.html',
   styleUrl: './student-profile.css',
 })
