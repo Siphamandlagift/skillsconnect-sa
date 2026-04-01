@@ -5,6 +5,7 @@ import { ProviderProfile } from './provider-profile';
 import { ManagerProfile } from './manager-profile';
 import { CourseCreate } from './course-create';
 import { CourseAssessments } from './course-assessments';
+import { UserCreate } from './user-create';
 
 export const routes: Routes = [
 	{ path: 'login', component: Login },
@@ -13,5 +14,6 @@ export const routes: Routes = [
 	{ path: 'manager-profile', component: ManagerProfile },
 	{ path: 'course-create', component: CourseCreate },
 	{ path: 'course-assessments', component: CourseAssessments },
+	{ path: 'user-create', component: UserCreate },
 	{ path: '', redirectTo: 'login', pathMatch: 'full' },
 ];
