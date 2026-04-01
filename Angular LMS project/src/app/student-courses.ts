@@ -1,4 +1,5 @@
-import { Component, signal } from '@angular/core';
+import { Component, signal, inject } from '@angular/core';
+import { CertificateService } from './certificate.service';
 
 @Component({
   selector: 'app-student-courses',
@@ -12,4 +13,17 @@ export class StudentCourses {
     { title: 'Data Science Basics', progress: 100, status: 'Completed' },
     { title: 'UI/UX Design', progress: 45, status: 'In Progress' },
   ]);
+  private readonly certificateService = inject(CertificateService);
+  private readonly studentName = 'Jane Doe'; // TODO: Replace with real student name from profile
+
+  markAsCompleted(index: number) {
+    this.courses.update(courses => {
+      const updated = [...courses];
+      if (updated[index].status !== 'Completed') {
+        updated[index] = { ...updated[index], progress: 100, status: 'Completed' };
+        this.certificateService.issueCertificate(this.studentName, updated[index].title);
+      }
+      return updated;
+    });
+  }
 }
