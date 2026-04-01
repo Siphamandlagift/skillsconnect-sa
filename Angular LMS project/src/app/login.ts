@@ -17,8 +17,8 @@ export class Login {
 
   readonly submitted = signal(false);
 
-  readonly email = computed(() => this.loginForm.get('email'));
-  readonly password = computed(() => this.loginForm.get('password'));
+  readonly email = computed(() => this.loginForm.get('email')!);
+  readonly password = computed(() => this.loginForm.get('password')!);
 
   onSubmit() {
     this.submitted.set(true);
