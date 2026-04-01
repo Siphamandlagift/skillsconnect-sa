@@ -1,0 +1,12 @@
+<div class="courses-container">
+	<h3>My Courses</h3>
+	<ul>
+		<li *ngFor="let course of courses()">
+			<div class="course-title">{{ course.title }}</div>
+			<div class="course-progress">
+				<span>Progress: {{ course.progress }}%</span>
+				<span [class.completed]="course.status === 'Completed'">{{ course.status }}</span>
+			</div>
+		</li>
+	</ul>
+</div>
