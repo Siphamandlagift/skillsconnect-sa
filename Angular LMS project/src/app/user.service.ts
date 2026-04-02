@@ -4,8 +4,12 @@ import { Observable, catchError, throwError } from 'rxjs';
 
 export interface User {
   name: string;
+  surname: string;
   email: string;
-  role: 'student' | 'manager' | 'provider';
+  idNumber: string;
+  company: string;
+  role: 'student' | 'manager' | 'provider' | 'admin';
+  profilePicture?: File | null;
 }
 
 @Injectable({ providedIn: 'root' })
@@ -22,6 +26,20 @@ export class UserService {
       catchError((error) => {
         return throwError(() => error);
       })
+    );
+  }
+
+  updateUser(user: User): Observable<User> {
+    // Assumes user has a unique idNumber
+    return this.http.put<User>(`${this.apiUrl}/${user.idNumber}`, user).pipe(
+      catchError((error) => throwError(() => error))
+    );
+  }
+
+  deleteUser(user: User): Observable<void> {
+    // Assumes user has a unique idNumber
+    return this.http.delete<void>(`${this.apiUrl}/${user.idNumber}`).pipe(
+      catchError((error) => throwError(() => error))
     );
   }
 }
